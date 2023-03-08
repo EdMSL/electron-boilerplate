@@ -1,0 +1,54 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./src",
+    "esModuleInterop": true,
+    "incremental": true,
+    "jsx": "react",
+    "lib": [
+      "dom",
+      "es2021"
+    ],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "outDir": "./app/build/",
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "es2021",
+    "paths": {
+      "$constants/*": [
+        "constants/*"
+      ],
+      "$containers/*": [
+        "renderer/containers/*"
+      ],
+      "$components/*": [
+        "renderer/components/*"
+      ],
+      "$main/*": [
+        "main/*"
+      ],
+      "$store/*": [
+        "store/*"
+      ],
+      "$types/*": [
+        "types/*"
+      ],
+      "$utils/*": [
+        "utils/*"
+      ],
+    }
+  },
+  "include": [
+    "src/**/*",
+    "configs/**/*",
+    "scripts/**/*",
+    "./.eslintrc.js",
+    "./jest.config.js",
+    "./.stylelintrc.js",
+    "./typings.d.ts",
+  ],
+}

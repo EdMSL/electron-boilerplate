@@ -1,0 +1,9 @@
+{
+  "name": "your-app-name",
+  "version": "0.0.1",
+  "description": "Your app description",
+  "main": "./dist/main.js",
+  "author": "Eduard Trait <eduard2011rus@gmail.com> (https://github.com/EdMSL)",
+  "license": "MIT",
+  "dependencies": {}
+}

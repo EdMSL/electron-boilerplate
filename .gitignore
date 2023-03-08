@@ -1,0 +1,15 @@
+# Файлы и папки операционной системы
+.DS_Store
+Thumbs.db
+
+# Файлы редактора
+.idea
+
+# Вспомогательные файлы
+*.log*
+node_modules/
+/npm-debug.log
+
+# Папка с собранными файлами проекта
+release/app/dist
+release/build
