@@ -1,5 +1,14 @@
 {
   "description": "Electron boilerplate with React, Redix amd TypeScript.",
+  "author": "Eduard Trait <eduard2011rus@gmail.com> (https://github.com/EdMSL)",
+  "license": "MIT",
+  "keywords": [
+    "boilerplate",
+    "react",
+    "redux",
+    "typescript",
+    "electron"
+  ],
   "main": "./src/main/main.ts",
   "scripts": {
     "start": "cross-env NODE_ENV=development TS_NODE_TRANSPILE_ONLY=true webpack serve --config ./configs/webpack.config.dev.ts",
@@ -14,11 +23,6 @@
     "eslint": "eslint --config ./.eslintrc.js src --ext .ts,.tsx,.js,.jsx --fix",
     "test": "jest --config=./jest.config.js"
   },
-  "keywords": [
-    "game",
-    "manager",
-    "electron"
-  ],
   "electronmon": {
     "patterns": [
       "!**/**",
@@ -26,8 +30,6 @@
     ],
     "logLevel": "quiet"
   },
-  "author": "Eduard Trait <eduard2011rus@gmail.com> (https://github.com/EdMSL)",
-  "license": "MIT",
   "devDependencies": {
     "@pmmmwh/react-refresh-webpack-plugin": "0.5.10",
     "@redux-devtools/extension": "3.2.5",

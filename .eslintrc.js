@@ -33,6 +33,7 @@ module.exports = {
     },
   },
   rules: {
+    'linebreak-style': 0,
     'max-len': [1, 100, 2, {
       ignoreUrls: true,
       ignoreComments: false,
