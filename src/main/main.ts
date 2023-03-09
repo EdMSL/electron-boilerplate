@@ -2,10 +2,10 @@
 import path from 'path';
 import fs from 'fs';
 import {
-  app, BrowserWindow, globalShortcut, ipcMain, shell,
+  app, BrowserWindow, ipcMain, shell,
 } from 'electron';
 
-import { resolveHtmlPath } from '../utils/paths';
+import { resolveHtmlPath } from '$utils/paths';
 
 let mainWindow: BrowserWindow | null = null;
 

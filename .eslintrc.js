@@ -41,6 +41,7 @@ module.exports = {
       ignoreTemplateLiterals: true,
     }],
     'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['state'] }],
+
     'import/extensions': [2, 'always', {
       js: 'never', ts: 'never', tsx: 'never',
     }],
@@ -60,13 +61,11 @@ module.exports = {
     'import/prefer-default-export': 0,
 
     'react/function-component-definition': [1, { namedComponents: 'arrow-function' }],
-    'react/jsx-indent': 1,
     'react/jsx-fragments': [1, 'element'],
     'react/jsx-max-props-per-line': [2, {
       maximum: 1,
       when: 'always',
     }],
-    'react/jsx-tag-spacing': 1,
     'react/prefer-stateless-function': 0,
     'react/prop-types': 0,
     'react/require-default-props': [1, { ignoreFunctionalComponents: true }],
