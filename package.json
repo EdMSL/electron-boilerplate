@@ -21,6 +21,7 @@
     "pack:test": "node scripts/pack.js",
     "release": "rm -rf ./release/app/dist/* && npm run build && npm run pack",
     "eslint": "eslint --config ./.eslintrc.js src --ext .ts,.tsx,.js,.jsx --fix",
+    "tslint": "bash -c 'tsc --noEmit --incremental false --project tsconfig.json'",
     "test": "jest --config=./jest.config.js"
   },
   "electronmon": {

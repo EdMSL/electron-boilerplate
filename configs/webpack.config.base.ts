@@ -13,7 +13,6 @@ const configuration: webpack.Configuration = {
     descriptionFiles: ['package.json'],
   },
   stats: 'errors-only',
-
 };
 
 export default merge(
