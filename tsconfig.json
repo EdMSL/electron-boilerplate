@@ -19,6 +19,9 @@
     "strict": true,
     "target": "es2021",
     "paths": {
+      "$assets/*": [
+        "assets/*"
+      ],
       "$constants/*": [
         "constants/*"
       ],
