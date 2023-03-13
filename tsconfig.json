@@ -49,9 +49,9 @@
     "src/**/*",
     "configs/**/*",
     "scripts/**/*",
-    "./.eslintrc.js",
-    "./jest.config.js",
-    "./.stylelintrc.js",
-    "./typings.d.ts",
+    ".eslintrc.js",
+    "jest.config.js",
+    ".stylelintrc.js",
+    "typings.d.ts",
   ],
 }
