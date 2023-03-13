@@ -25,7 +25,7 @@ export const App: React.FC = () => {
         <button
           type="button"
           style={{
-            padding: 0, margin: 0, border: 'none', fontSize: 0, cursor: 'pointer',
+            padding: 0, marginBottom: 10, border: 'none', fontSize: 0, cursor: 'pointer',
           }}
           onClick={toggleSidebar}
         >
