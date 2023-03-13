@@ -10,20 +10,14 @@ import { IAppState } from '$types/state';
 const getAppState = (state: IAppState): IAppState => state;
 
 function* locationChangeSaga({ payload: { location } }: LocationChangeAction): SagaIterator {
-  const { CONTENT: { text } }: ReturnType<typeof getAppState> = yield select(getAppState);
+  if (location.pathname.includes('second')) {
+    const { CONTENT: { text } }: ReturnType<typeof getAppState> = yield select(getAppState);
 
-  if (location.pathname.includes('second') && !text) {
-    // ipcRenderer.send('any');
-    // yield put(changeText('some'));
-    // const str = window.electron.readFile('data/text.txt');
-    // const str = window.electron.ipcRenderer.sendMessage('readFile', ['data/text.txt']);
-    // yield call(window.electron.ipcRenderer.sendMessage, 'readFile', ['data/text.txt']);
-    // const str = yield call(window.electron.ipcRenderer.once, 'readFile');
-    // const str = yield call(window.electron.readFile, 'data/text.txt');
-    // const { payload: str } = yield take('readFile');
-    const str = yield call(window.electron.ipcRenderer.invoke, 'readFile', ['data/text.txt']);
-    console.log(str);
-    yield put(changeText(str));
+    if (!text) {
+      const str = yield call(window.electron.ipcRenderer.invoke, 'readFile', ['data/text.txt']);
+
+      yield put(changeText(str));
+    }
   }
 }
 
