@@ -1,4 +1,4 @@
-Boilerplate for Electron app. It uses:
+Boilerplate for an Electron app. It uses:
 * React
 * Redux
 * TypeScript
