@@ -1,6 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import miniCssExtractPlugin from './webpack/plugins/mini-css-extract-plugin';
 import { merge } from 'webpack-merge';
 import TerserPlugin from 'terser-webpack-plugin';
 import baseConfig from './webpack.config.base';
@@ -42,9 +42,7 @@ const configuration: webpack.Configuration = {
       DEBUG_PROD: false,
     }),
 
-    new MiniCssExtractPlugin({
-      filename: 'style.css',
-    }),
+    miniCssExtractPlugin(),
 
     new webpack.DefinePlugin({
       'process.type': '"renderer"',
