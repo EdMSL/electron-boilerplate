@@ -16,9 +16,6 @@ async function bundleElectronApp(asar, isAll) {
     ignore: 'build',
     out: './app/release/build',
     asar: asar === 'asar',
-    win32metadata: {
-      ProductName: appName,
-    },
     afterComplete: [(buildPath, _, __, arch) => {
       fs.renameSync(
         path.resolve(buildPath),
