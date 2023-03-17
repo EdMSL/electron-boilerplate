@@ -1,5 +1,6 @@
 {
   "name": "your-app-name",
+  "productName": "Awesome App",
   "version": "0.0.1",
   "description": "Your app description",
   "main": "./dist/main.js",

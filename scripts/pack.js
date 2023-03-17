@@ -6,8 +6,6 @@ const chalk = require('chalk');
 
 const pjson = require('../app/release/package.json');
 
-const appName = 'App';
-
 async function bundleElectronApp(asar, isAll) {
   return packager({
     dir: './app/release',
@@ -15,6 +13,7 @@ async function bundleElectronApp(asar, isAll) {
     arch: isAll ? ['x64', 'ia32'] : ['ia32'],
     ignore: 'build',
     out: './app/release/build',
+    executableName: 'app',
     asar: asar === 'asar',
     afterComplete: [(buildPath, _, __, arch) => {
       fs.renameSync(
@@ -22,8 +21,8 @@ async function bundleElectronApp(asar, isAll) {
         path.resolve(
           path.dirname(buildPath),
           asar !== 'asar'
-            ? `${appName} Test ${pjson.version} ${new Date().toLocaleString().replace(/(,\s|:)/g, '_')} ${arch.replace('ia', 'x')}`
-            : `${appName} ${pjson.version}`,
+            ? `${pjson.productName} Test ${pjson.version} ${new Date().toLocaleString().replace(/(,\s|:)/g, '_')} ${arch.replace('ia', 'x')}`
+            : `${pjson.productName} ${pjson.version}`,
         ),
       );
     }],
