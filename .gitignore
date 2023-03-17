@@ -6,10 +6,10 @@ Thumbs.db
 .idea
 
 # Вспомогательные файлы
+logs
 *.log*
 node_modules/
-/npm-debug.log
 
 # Папка с собранными файлами проекта
-release/app/dist
-release/build
+app/release/dist
+app/release/build

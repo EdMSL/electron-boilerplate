@@ -4,21 +4,29 @@ const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
 
-const pjson = require('../release/app/package.json');
+const pjson = require('../app/release/package.json');
+
+const appName = 'App';
 
 async function bundleElectronApp(asar, isAll) {
   return packager({
-    dir: './release/app',
+    dir: './app/release',
     platform: 'win32',
     arch: isAll ? ['x64', 'ia32'] : ['ia32'],
-    out: './release/build',
+    ignore: 'build',
+    out: './app/release/build',
     asar: asar === 'asar',
+    win32metadata: {
+      ProductName: appName,
+    },
     afterComplete: [(buildPath, _, __, arch) => {
       fs.renameSync(
         path.resolve(buildPath),
         path.resolve(
           path.dirname(buildPath),
-          `RGM ${pjson.version} ${new Date().toLocaleString().replace(/(,\s|:)/g, '_')} ${arch.replace('ia', 'x')}`,
+          asar !== 'asar'
+            ? `${appName} Test ${pjson.version} ${new Date().toLocaleString().replace(/(,\s|:)/g, '_')} ${arch.replace('ia', 'x')}`
+            : `${appName} ${pjson.version}`,
         ),
       );
     }],

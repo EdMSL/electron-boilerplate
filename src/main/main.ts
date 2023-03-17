@@ -28,7 +28,7 @@ const createWindow = async () => {
     webPreferences: {
       preload: app.isPackaged
         ? path.join(__dirname, 'preload.js')
-        : path.join(__dirname, '../../release/app/dist/preload.js'),
+        : path.join(__dirname, '../../app/release/dist/preload.js'),
     },
   });
 
