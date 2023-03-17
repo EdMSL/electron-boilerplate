@@ -18,7 +18,7 @@ async function bundleElectronApp(asar, isAll) {
         path.resolve(buildPath),
         path.resolve(
           path.dirname(buildPath),
-          `RGM ${pjson.version} ${new Date().toLocaleString().replaceAll(/(,\s|:)/g, '_')} ${arch.replace('ia', 'x')}`,
+          `RGM ${pjson.version} ${new Date().toLocaleString().replace(/(,\s|:)/g, '_')} ${arch.replace('ia', 'x')}`,
         ),
       );
     }],

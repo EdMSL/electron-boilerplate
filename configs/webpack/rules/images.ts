@@ -11,7 +11,7 @@ export default (): webpack.Configuration => ({
         },
         parser: {
           dataUrlCondition: {
-            maxSize: 10 * 1024,
+            maxSize: 3 * 1024,
           },
         },
       },
