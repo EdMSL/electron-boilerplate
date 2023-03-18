@@ -1,62 +1,39 @@
 /* eslint global-require: off, no-console: off */
+import {
+  app, BrowserWindow, globalShortcut, ipcMain,
+} from 'electron';
 import path from 'path';
 import fs from 'fs';
-import {
-  app, BrowserWindow, ipcMain, shell,
-} from 'electron';
-
-import { resolveHtmlPath } from '$utils/paths';
+import { createWindow } from './createWindow';
 
 let mainWindow: BrowserWindow | null = null;
 
-/* ipcMain.on('readFile', async (event, arg) => {
-  const res = fs.readFileSync(path.resolve(arg[0]), 'utf-8');
-  // const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
-  // console.log(msgTemplate(arg));
-  event.reply('readFile', res);
-}); */
-ipcMain.handle('readFile', async (event, arg) => {
+const start = async () => {
+  mainWindow = createWindow();
+
+  globalShortcut.register('Alt+Q', () => {
+    app.exit();
+  });
+
+  globalShortcut.register('F10', () => {
+    if (mainWindow && mainWindow.isFocused()) {
+      if (mainWindow.webContents.isDevToolsOpened()) {
+        mainWindow.webContents.closeDevTools();
+      } else {
+        mainWindow.webContents.openDevTools();
+      }
+    }
+  });
+
+  app.on('activate', () => {
+    if (mainWindow === null) createWindow();
+  });
+};
+
+ipcMain.handle('readFile', async (_, arg) => {
   const res = fs.readFileSync(path.resolve(arg[0]), 'utf-8');
   return res;
 });
-
-const createWindow = async () => {
-  mainWindow = new BrowserWindow({
-    show: false,
-    width: 1024,
-    height: 1024,
-    webPreferences: {
-      preload: app.isPackaged
-        ? path.join(__dirname, 'preload.js')
-        : path.join(__dirname, '../../app/release/dist/preload.js'),
-    },
-  });
-
-  mainWindow.loadURL(resolveHtmlPath('index.html'));
-
-  const pathToExtension = path.resolve('E:\\Projects\\oa-launcher\\extensions\\reduxDevTools');
-
-  if (process.env.NODE_ENV === 'development' && fs.existsSync(pathToExtension)) {
-    mainWindow.webContents.session.loadExtension(pathToExtension);
-  }
-
-  mainWindow.on('ready-to-show', () => {
-    if (!mainWindow) {
-      throw new Error('"mainWindow" is not defined');
-    }
-
-    mainWindow.show();
-  });
-
-  mainWindow.on('closed', () => {
-    mainWindow = null;
-  });
-
-  mainWindow.webContents.setWindowOpenHandler((edata) => {
-    shell.openExternal(edata.url);
-    return { action: 'deny' };
-  });
-};
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
@@ -67,9 +44,6 @@ app.on('window-all-closed', () => {
 app
   .whenReady()
   .then(() => {
-    createWindow();
-    app.on('activate', () => {
-      if (mainWindow === null) createWindow();
-    });
+    start();
   })
   .catch(console.log);
