@@ -1,6 +1,7 @@
 import { app, BrowserWindow, shell } from 'electron';
 import path from 'path';
 import fs from 'fs';
+
 import { resolveHtmlPath } from '$utils/paths';
 
 export const createWindow = () => {
